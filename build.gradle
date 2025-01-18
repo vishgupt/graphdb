@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JanusGraph Core Library
+    implementation 'org.janusgraph:janusgraph-core:1.1.0'
+
+    // Cassandra Backend
+    implementation 'org.janusgraph:janusgraph-cql:1.1.0'
+
+    // Elasticsearch Backend (if needed)
+    implementation 'org.janusgraph:janusgraph-es:1.1.0'
+
+    // Apache TinkerPop (Optional, for advanced graph queries)
+    implementation 'org.apache.tinkerpop:gremlin-core:3.5.3'
+
+    // Logging (Optional, for better logging output)
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
+
+    // Unit tests dependency
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()              // Optional, if you are using JUnit for testing
+}
