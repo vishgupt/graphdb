@@ -1,11 +1,11 @@
 package com.rainier.janusgraph.service;
 
+import org.janusgraph.diskstorage.BackendException;
+
 public interface GraphManagementService {
 
-  public boolean createGraph(GraphDefinition graphDefinition);
+  void createGraph(GraphDefinition graphDefinition);
 
-  public boolean dropGraph(String graphName);
-
-  public GraphDefinition getGraphDefinition(String graphName);
+  void dropGraph(String graphName);
 
 }

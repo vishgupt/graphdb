@@ -1,12 +1,14 @@
 package com.rainier.janusgraph.service;
 
 import java.util.List;
+import org.locationtech.jts.geomgraph.Edge;
 
 public record GraphSchema(
     List<PropertyKey> propertyKeys,
     List<VertexLabel> vertexLabels,
     List<EdgeLabel> edgeLabels,
-    List<Index> indexes
+    List<VertexIndex> vertexIndices,
+    List<EdgeIndex> edgeIndices
 ) {
 
   public record PropertyKey(
@@ -31,18 +33,39 @@ public record GraphSchema(
       String name,
       String multiplicity,
       List<String> properties,
+      List<Connection> connections,
+      boolean directed,
       String description
   ) {
 
   }
 
-  public record Index(
+  public record Connection(
+      String from,
+      String to
+  ) {
+
+  }
+
+  public record VertexIndex(
       String name,
       String type,
-      String label,
+      String vertexLabel,
       List<String> propertyKeys,
       Boolean unique,
-      String backend,
+      String description
+  ) {
+
+  }
+
+  public record EdgeIndex(
+      String name,
+      String type,
+      String edgeLabel,
+      List<String> propertyKeys,
+      Boolean unique,
+      String direction,
+      String order,
       String description
   ) {
   }

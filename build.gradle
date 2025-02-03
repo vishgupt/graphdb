@@ -19,15 +19,30 @@ dependencies {
     // Apache TinkerPop (Optional, for advanced graph queries)
     implementation 'org.apache.tinkerpop:gremlin-core:3.5.3'
 
+    // Cassandra Driver (Optional, for Cassandra backend)
+    implementation 'com.datastax.oss:java-driver-core:4.15.0'
+
     // Logging (Optional, for better logging output)
     implementation 'org.slf4j:slf4j-api:1.7.36'
     implementation 'org.slf4j:slf4j-simple:1.7.36'
 
+    // Apache Commons Configuration
+    implementation 'org.apache.commons:commons-configuration2:2.9.0'
+    implementation 'commons-beanutils:commons-beanutils:1.9.4'  // Required by commons-configuration2
+
     // Unit tests dependency
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // Added from the code block
+    implementation 'commons-logging:commons-logging:1.2'
 }
 
 tasks.named('test') {
     useJUnitPlatform()              // Optional, if you are using JUnit for testing
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17  // or whatever version you're using
+    targetCompatibility = JavaVersion.VERSION_17
 }
